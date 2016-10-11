@@ -42,8 +42,4 @@ Currently there is one error that I know about. If you deactivate the plugin it 
 I'm trying to figure out why, however it doesn't actually seem to cause any problems. If you know anything about this 
 error, let me know. 
 
-If you find any other bugs or have some feedback about things you would like to see changed or added, make an issue on github:
-
-https://github.com/rgrams/ross_project_timer
-
-Or you can contact me directly through my website: http://rossgrams.com/
+If you find any other bugs or have some feedback about things you would like to see changed or added, make an issue here on github, or you can contact me directly through my website: http://rossgrams.com/
