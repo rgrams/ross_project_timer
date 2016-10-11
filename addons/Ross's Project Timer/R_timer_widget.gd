@@ -8,6 +8,8 @@ var t = 0
 var pause_on_switch = true
 var paused = false
 
+var focused = false
+
 func initialize():
 	get_node("Label").set_text("Initializing...")
 	get_node("Timer").connect("timeout", self, "timer_tick")
@@ -15,6 +17,11 @@ func initialize():
 	get_node("Timer").start()
 	load_time()
 	load_options()
+
+func _input_event(event):
+	if event.type == InputEvent.MOUSE_BUTTON and event.pressed and event.button_index == BUTTON_RIGHT:
+		PauseResume_Button_pressed()
+		accept_event()
 
 func _notification(what):
 	if not paused and pause_on_switch:

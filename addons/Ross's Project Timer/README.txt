@@ -1,6 +1,7 @@
-===================================================
-                               Ross's Project Timer Readme v 0.1.0
-===================================================
+==============================================================================
+
+                      Ross's Project Timer Readme v 0.2.0
+==============================================================================
 
      HOW TO USE THIS PLUGIN
 ---------------------------------------------------------------
@@ -13,9 +14,9 @@
 The plugin will create a button in the editor's top toolbar, on the left side next to the colorful sound volume bar. It will
 immediately start counting up time every second. 
 
-If you switch to a different window it will automatically stop, and automatically resume when you switch back. It only counts
-time when the editor window is in focus. It also saves the elapsed time when you close the editor or disable the plugin, and 
-loads your time when you open the project again or re-enable the plugin. It keeps a save file in its addon folder. 
+By default the timer will automatically pause if you switch to a different window, and automatically resume when you switch back. 
+You can toggle this on and off in the menu (see below). Your elapsed time is saved when you close the editor or disable the plugin, 
+and loaded when you open the project again or re-enable the plugin.
 
 
      MENU
@@ -25,12 +26,20 @@ You can click on the plugin button and it will open a menu with a few different 
 
      - Pause (& Resume when paused): Pauses and resumes the timer. 
 
-     - Reset Time: Resets the elapsed time to zero
+     - Pause on window switch: Toggle off to make the timer keep counting up when the editor window is not in focus 
+
+     - Reset Time: Resets the elapsed time to zero. Pops up a confirm dialog so you don't do it by mistake. 
 
      - Add Time: Adds the amount of time selected in the input box to the elapsed time. 
             (Select a negative value to subtract time.)
 
      - Close Menu: closes the menu. (Or you can press escape or click on something else.)
+
+
+    OTHER FEATURES
+---------------------------------------------------------------
+
+You can right-click on the plugin button to quickly pause and resume. 
 
 
      BUGS / FEEDBACK
@@ -41,7 +50,7 @@ Currently there is one error that I know about. If you deactivate the plugin it 
 ERROR: set_persisting: Condition ' !props.has(p_name) ' is true.
      At: core/globals.cpp:100
 
-I'm trying to figure out why, however it doesn't actually seem to cause any problems. If you know anything about this 
+However, every plugin I've tried, even the official ones, gives this error message. It doesn't actually seem to cause any problems. If you know anything about this 
 error, let me know. 
 
 If you find any other bugs or have some feedback about things you would like to see changed or added, make an issue on github:
