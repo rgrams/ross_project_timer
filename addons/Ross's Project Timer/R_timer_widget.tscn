@@ -214,6 +214,22 @@ text = "Close Menu"
 flat = false
 align = 0
 
+[node name="ResetConfirm" type="ConfirmationDialog" parent="."]
+
+visibility/visible = false
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -338.0
+margin/top = 52.0
+margin/right = -7.0
+margin/bottom = 110.0
+popup/exclusive = false
+window/title = "Please Confirm..."
+dialog/text = "Are you sure you want to reset the timer to zero\?"
+dialog/hide_on_ok = true
+
 [connection signal="pressed" from="Menu/GridBox/Pause-Resume Button" to="." method="PauseResume_Button_pressed"]
 
 [connection signal="pressed" from="Menu/GridBox/Reset Button" to="." method="Reset_Button_pressed"]
@@ -221,5 +237,7 @@ align = 0
 [connection signal="pressed" from="Menu/GridBox/Add Time Button" to="." method="Add_Time_Button_pressed"]
 
 [connection signal="pressed" from="Menu/GridBox/Close Button" to="." method="Close_Button_pressed"]
+
+[connection signal="confirmed" from="ResetConfirm" to="." method="ResetConfirm_confirmed"]
 
 

@@ -65,6 +65,10 @@ func button_pressed():
 	get_node("Menu").set_global_pos(get_global_pos() - Vector2(0, -26))
 
 func Reset_Button_pressed():
+	get_node("ResetConfirm").popup()
+	get_node("ResetConfirm").set_global_pos(get_global_pos() + Vector2(-330, 52))
+
+func ResetConfirm_confirmed():
 	t = 0
 	update_text()
 
