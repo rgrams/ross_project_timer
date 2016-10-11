@@ -1,7 +1,5 @@
 # Ross's Project Timer
-===================================================
-v 0.1.0 Readme
-===================================================
+_v 0.1.0 Readme_
 
 ##How to use this plugin
 
@@ -22,24 +20,24 @@ loads your time when you open the project again or re-enable the plugin. It keep
 
 You can click on the plugin button and it will open a menu with a few different options:
 
-     - Pause (& Resume when paused): Pauses and resumes the timer. 
+- Pause (& Resume when paused): Pauses and resumes the timer. 
 
-     - Reset Time: Resets the elapsed time to zero
+- Reset Time: Resets the elapsed time to zero
 
-     - Add Time: Adds the amount of time selected in the input box to the elapsed time. 
+- Add Time: Adds the amount of time selected in the input box to the elapsed time. 
             (Select a negative value to subtract time.)
 
-     - Close Menu: closes the menu. (Or you can press escape or click on something else.)
+- Close Menu: closes the menu. (Or you can press escape or click on something else.)
 
 
 ##Bugs / Feedback
 
 Currently there is one error that I know about. If you deactivate the plugin it gives this error message:
 
-===
-ERROR: set_persisting: Condition ' !props.has(p_name) ' is true.
-     At: core/globals.cpp:100
-===
+
+     ERROR: set_persisting: Condition ' !props.has(p_name) ' is true.
+          At: core/globals.cpp:100
+
 
 I'm trying to figure out why, however it doesn't actually seem to cause any problems. If you know anything about this 
 error, let me know. 
