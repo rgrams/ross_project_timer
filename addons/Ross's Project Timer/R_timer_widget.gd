@@ -2,9 +2,11 @@ extends Button
 tool
 
 var save_filepath = "res://addons/Ross's Project Timer/time.sav"
+var options_filepath = "res://addons/Ross's Project Timer/options.sav"
 
 var t = 0
-
+var pause_on_switch = true
+var paused = false
 
 func initialize():
 	get_node("Label").set_text("Initializing...")
@@ -12,15 +14,19 @@ func initialize():
 	connect("pressed", self, "button_pressed")
 	get_node("Timer").start()
 	load_time()
+	load_options()
 
 func _notification(what):
-	if what == MainLoop.NOTIFICATION_WM_FOCUS_OUT:
-		get_node("Timer").stop()
-		get_node("AnimationPlayer").play("paused")
-	elif what == MainLoop.NOTIFICATION_WM_FOCUS_IN:
-		get_node("Timer").start()
-		get_node("AnimationPlayer").stop_all()
-		get_node("Label").set_opacity(1.0)
+	if not paused and pause_on_switch:
+		if what == MainLoop.NOTIFICATION_WM_FOCUS_OUT:
+			get_node("Timer").stop()
+			get_node("AnimationPlayer").play("paused")
+		elif what == MainLoop.NOTIFICATION_WM_FOCUS_IN:
+			# It's impossible to change pause_on_switch when the window is not in focus, 
+			# so I won't ever need to resume on focus_in when pause_on_switch is false. 
+			get_node("Timer").start()
+			get_node("AnimationPlayer").stop_all()
+			get_node("Label").set_opacity(1.0)
 
 func timer_tick():
 	t += 1
@@ -57,8 +63,29 @@ func save_time():
 	save.close()
 	print("(Ross's Project Timer) Saving . . . Time: ", t)
 
+func load_options():
+	var save = File.new()
+	if not save.file_exists(options_filepath):
+		save_options()
+	save.open(options_filepath, File.READ)
+	var l = {}
+	save.seek(0)
+	l.parse_json(save.get_line())
+	pause_on_switch = l["pause on switch"]
+	get_node("Menu/GridBox/Switch-Pause Toggle").set_pressed(pause_on_switch)
+	save.close()
+
+func save_options():
+	var save = File.new()
+	save.open(options_filepath, File.WRITE)
+	var l = {"pause on switch": pause_on_switch}
+	save.seek(0)
+	save.store_line(l.to_json())
+	save.close()
+
 func _exit_tree():
 	save_time()
+	save_options()
 
 func button_pressed():
 	get_node("Menu").popup()
@@ -84,10 +111,15 @@ func Add_Time_Button_pressed():
 func PauseResume_Button_pressed():
 	if get_node("Timer").is_processing():
 		get_node("Timer").stop()
+		paused = true
 		get_node("Menu/GridBox/Pause-Resume Button").set_text("Resume")
 		get_node("AnimationPlayer").play("paused")
 	else:
 		get_node("Timer").start()
+		paused = false
 		get_node("Menu/GridBox/Pause-Resume Button").set_text("Pause")
 		get_node("AnimationPlayer").stop_all()
 		get_node("Label").set_opacity(1.0)
+
+func SwitchPause_Toggle_pressed():
+	pause_on_switch = get_node("Menu/GridBox/Switch-Pause Toggle").is_pressed()

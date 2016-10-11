@@ -80,7 +80,7 @@ size_flags/vertical = 2
 margin/left = 1.0
 margin/top = -4.0
 margin/right = 202.0
-margin/bottom = -139.0
+margin/bottom = -148.0
 popup/exclusive = false
 items = [  ]
 
@@ -116,33 +116,35 @@ text = "Pause"
 flat = false
 align = 0
 
-[node name="Reset Button" type="ToolButton" parent="Menu/GridBox"]
+[node name="Switch-Pause Toggle" type="CheckBox" parent="Menu/GridBox"]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
-size_flags/horizontal = 3
+size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 22.0
 margin/right = 185.0
-margin/bottom = 44.0
-toggle_mode = false
+margin/bottom = 45.0
+toggle_mode = true
+is_pressed = true
 enabled_focus_mode = 2
 shortcut = null
-text = "Reset Time"
+text = "Pause on window switch"
 flat = false
 align = 0
 
 [node name="Add Time Button" type="ToolButton" parent="Menu/GridBox"]
 
+hint/tooltip = "Set to negative value to subtract time. "
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
 margin/left = 0.0
-margin/top = 44.0
+margin/top = 45.0
 margin/right = 185.0
-margin/bottom = 80.0
+margin/bottom = 81.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -175,27 +177,33 @@ editable = true
 prefix = ""
 suffix = "min."
 
-[node name="Control" type="Control" parent="Menu/GridBox"]
+[node name="Reset Button" type="ToolButton" parent="Menu/GridBox"]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
-size_flags/horizontal = 2
+size_flags/horizontal = 3
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 80.0
+margin/top = 81.0
 margin/right = 185.0
-margin/bottom = 80.0
+margin/bottom = 103.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Reset Time"
+flat = false
+align = 0
 
 [node name="HSeparator" type="HSeparator" parent="Menu/GridBox"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
-size_flags/vertical = 3
+size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 80.0
+margin/top = 103.0
 margin/right = 185.0
-margin/bottom = 97.0
+margin/bottom = 106.0
 
 [node name="Close Button" type="ToolButton" parent="Menu/GridBox"]
 
@@ -204,9 +212,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 97.0
+margin/top = 106.0
 margin/right = 185.0
-margin/bottom = 119.0
+margin/bottom = 128.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -232,9 +240,11 @@ dialog/hide_on_ok = true
 
 [connection signal="pressed" from="Menu/GridBox/Pause-Resume Button" to="." method="PauseResume_Button_pressed"]
 
-[connection signal="pressed" from="Menu/GridBox/Reset Button" to="." method="Reset_Button_pressed"]
+[connection signal="pressed" from="Menu/GridBox/Switch-Pause Toggle" to="." method="SwitchPause_Toggle_pressed"]
 
 [connection signal="pressed" from="Menu/GridBox/Add Time Button" to="." method="Add_Time_Button_pressed"]
+
+[connection signal="pressed" from="Menu/GridBox/Reset Button" to="." method="Reset_Button_pressed"]
 
 [connection signal="pressed" from="Menu/GridBox/Close Button" to="." method="Close_Button_pressed"]
 
