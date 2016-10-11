@@ -1,7 +1,7 @@
 # Ross's Project Timer
 _A simple, unobtrusive, Godot engine editor plugin for tracking the time spent on a project._
 
-_v 0.2.0 Readme_
+_v 1.0.0 Readme_
 
 ![Screenshot](http://i.imgur.com/GjTEQ0T.png)
 

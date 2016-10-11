@@ -1,6 +1,6 @@
 ==============================================================================
 
-                      Ross's Project Timer Readme v 0.2.0
+                      Ross's Project Timer Readme v 1.0.0
 ==============================================================================
 
      HOW TO USE THIS PLUGIN
@@ -26,7 +26,7 @@ You can click on the plugin button and it will open a menu with a few different 
 
      - Pause (& Resume when paused): Pauses and resumes the timer. 
 
-     - Pause on window switch: Toggle off to make the timer keep counting up when the editor window is not in focus 
+     - Pause on window switch: Toggle off to make the timer keep counting up when the editor window is not in focus. 
 
      - Reset Time: Resets the elapsed time to zero. Pops up a confirm dialog so you don't do it by mistake. 
 

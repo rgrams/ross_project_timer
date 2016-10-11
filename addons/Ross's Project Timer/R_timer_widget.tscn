@@ -222,6 +222,23 @@ text = "Close Menu"
 flat = false
 align = 0
 
+[node name="Version Label" type="Label" parent="Menu"]
+
+visibility/opacity = 0.15
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 137.0
+margin/top = 126.0
+margin/right = 195.0
+margin/bottom = 140.0
+text = "1.0.0"
+align = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
 [node name="ResetConfirm" type="ConfirmationDialog" parent="."]
 
 visibility/visible = false
