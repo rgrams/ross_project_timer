@@ -1,4 +1,3 @@
-# ross_project_timer
 ===================================================
                                Ross's Project Timer Readme v 0.1.0
 ===================================================
@@ -50,3 +49,4 @@ If you find any other bugs or have some feedback about things you would like to 
 https://github.com/rgrams/ross_project_timer
 
 Or you can contact me directly through my website: http://rossgrams.com/
+
