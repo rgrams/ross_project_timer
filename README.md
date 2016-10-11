@@ -1,10 +1,9 @@
-# ross_project_timer
+# Ross's Project Timer
 ===================================================
-                               Ross's Project Timer Readme v 0.1.0
+v 0.1.0 Readme
 ===================================================
 
-     HOW TO USE THIS PLUGIN
----------------------------------------------------------------
+##How to use this plugin
 
 1) Place the 'addons' folder in your project's root folder. 
 (If you've downloaded this from the Asset Library it should happen automatically)
@@ -19,8 +18,7 @@ time when the editor window is in focus. It also saves the elapsed time when you
 loads your time when you open the project again or re-enable the plugin. It keeps a save file in its addon folder. 
 
 
-     MENU
----------------------------------------------------------------
+##Menu
 
 You can click on the plugin button and it will open a menu with a few different options:
 
@@ -34,13 +32,14 @@ You can click on the plugin button and it will open a menu with a few different 
      - Close Menu: closes the menu. (Or you can press escape or click on something else.)
 
 
-     BUGS / FEEDBACK
----------------------------------------------------------------
+##Bugs / Feedback
 
 Currently there is one error that I know about. If you deactivate the plugin it gives this error message:
 
+===
 ERROR: set_persisting: Condition ' !props.has(p_name) ' is true.
      At: core/globals.cpp:100
+===
 
 I'm trying to figure out why, however it doesn't actually seem to cause any problems. If you know anything about this 
 error, let me know. 
