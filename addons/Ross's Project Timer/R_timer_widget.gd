@@ -16,10 +16,11 @@ func initialize():
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_FOCUS_OUT:
 		get_node("Timer").stop()
-		set_disabled(true)
+		get_node("AnimationPlayer").play("paused")
 	elif what == MainLoop.NOTIFICATION_WM_FOCUS_IN:
 		get_node("Timer").start()
-		set_disabled(false)
+		get_node("AnimationPlayer").stop_all()
+		get_node("Label").set_opacity(1.0)
 
 func timer_tick():
 	t += 1

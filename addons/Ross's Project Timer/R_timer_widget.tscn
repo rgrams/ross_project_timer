@@ -5,14 +5,14 @@
 [sub_resource type="Animation" id=1]
 
 resource/name = "paused"
-length = 2.0
+length = 4.0
 loop = true
 step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Label:visibility/opacity")
 tracks/0/interp = 2
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 1 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ 0.0, 0.45 ] }
+tracks/0/keys = { "times":FloatArray( 0, 1.8, 2.3 ), "transitions":FloatArray( 1, 1, 1 ), "update":0, "values":[ 0.5, 0.1, 0.1 ] }
 
 [node name="Control" type="Button"]
 
