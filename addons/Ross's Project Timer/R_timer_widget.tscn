@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://addons/Ross's Project Timer/R_timer_widget.gd" type="Script" id=1]
+[ext_resource path="res://addons/Ross's Project Timer/Timer Icon_16.png" type="Texture" id=2]
 
 [sub_resource type="Animation" id=1]
 
@@ -31,6 +32,49 @@ shortcut = null
 flat = false
 script/script = ExtResource( 1 )
 
+[node name="Pause Icon" type="Node2D" parent="."]
+
+visibility/visible = false
+transform/pos = Vector2( 85.9992, 7.93475 )
+transform/scale = Vector2( 0.519362, 0.519362 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Pause Icon"]
+
+material/use_parent = true
+polygon = Vector2Array( -6.85583, -7.56596, -6.51194, -7.9797, -2.5173, -7.97307, -2.15884, -7.57486, -2.1521, 7.58931, -2.54666, 7.98387, -6.44676, 7.98387, -6.8565, 7.52861 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 0.282353 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="Polygon2D1" type="Polygon2D" parent="Pause Icon"]
+
+material/use_parent = true
+transform/pos = Vector2( 8.97441, 0 )
+polygon = Vector2Array( -6.85583, -7.56596, -6.51194, -7.9797, -2.5173, -7.97307, -2.15884, -7.57486, -2.1521, 7.58931, -2.54666, 7.98387, -6.44676, 7.98387, -6.8565, 7.52861 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 0.282353 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="Timer Icon" type="Sprite" parent="."]
+
+visibility/visible = false
+transform/pos = Vector2( 46.7787, 13.9193 )
+texture = ExtResource( 2 )
+
 [node name="Label" type="Label" parent="."]
 
 anchor/top = 3
@@ -43,7 +87,7 @@ margin/left = 7.0
 margin/top = 5.0
 margin/right = 87.0
 margin/bottom = -9.0
-text = "Initializing..."
+text = "0:09:59"
 align = 1
 valign = 1
 percent_visible = 1.0
@@ -80,7 +124,7 @@ size_flags/vertical = 2
 margin/left = 1.0
 margin/top = -4.0
 margin/right = 202.0
-margin/bottom = -148.0
+margin/bottom = -242.0
 popup/exclusive = false
 items = [  ]
 
@@ -107,30 +151,12 @@ size_flags/horizontal = 3
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 185.0
+margin/right = 189.0
 margin/bottom = 22.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 text = "Pause"
-flat = false
-align = 0
-
-[node name="Switch-Pause Toggle" type="CheckBox" parent="Menu/GridBox"]
-
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 22.0
-margin/right = 185.0
-margin/bottom = 45.0
-toggle_mode = true
-is_pressed = true
-enabled_focus_mode = 2
-shortcut = null
-text = "Pause on window switch"
 flat = false
 align = 0
 
@@ -142,9 +168,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
 margin/left = 0.0
-margin/top = 45.0
-margin/right = 185.0
-margin/bottom = 81.0
+margin/top = 22.0
+margin/right = 189.0
+margin/bottom = 56.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -184,13 +210,96 @@ focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 81.0
-margin/right = 185.0
-margin/bottom = 103.0
+margin/top = 56.0
+margin/right = 189.0
+margin/bottom = 78.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 text = "Reset Time"
+flat = false
+align = 0
+
+[node name="HSeparator1" type="HSeparator" parent="Menu/GridBox"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 78.0
+margin/right = 189.0
+margin/bottom = 93.0
+
+[node name="Switch-Pause Toggle" type="CheckBox" parent="Menu/GridBox"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 93.0
+margin/right = 189.0
+margin/bottom = 116.0
+toggle_mode = true
+is_pressed = true
+enabled_focus_mode = 2
+shortcut = null
+text = "Pause on window switch"
+flat = false
+align = 0
+
+[node name="Use-Anim Toggle" type="CheckBox" parent="Menu/GridBox"]
+
+hint/tooltip = "Disabling this may save a percent or two of\nyour CPU usage while the timer is paused. "
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 116.0
+margin/right = 189.0
+margin/bottom = 139.0
+toggle_mode = true
+is_pressed = true
+enabled_focus_mode = 2
+shortcut = null
+text = "Use pause animation"
+flat = false
+align = 0
+
+[node name="Show Seconds Toggle" type="CheckBox" parent="Menu/GridBox"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 139.0
+margin/right = 189.0
+margin/bottom = 162.0
+toggle_mode = true
+is_pressed = true
+enabled_focus_mode = 2
+shortcut = null
+text = "Show seconds"
+flat = false
+align = 0
+
+[node name="Only-Mouseover Toggle" type="CheckBox" parent="Menu/GridBox"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 162.0
+margin/right = 189.0
+margin/bottom = 185.0
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+text = "Only show on mouseover"
 flat = false
 align = 0
 
@@ -199,11 +308,11 @@ align = 0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
-size_flags/vertical = 2
+size_flags/vertical = 3
 margin/left = 0.0
-margin/top = 103.0
-margin/right = 185.0
-margin/bottom = 106.0
+margin/top = 185.0
+margin/right = 189.0
+margin/bottom = 200.0
 
 [node name="Close Button" type="ToolButton" parent="Menu/GridBox"]
 
@@ -212,9 +321,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 106.0
-margin/right = 185.0
-margin/bottom = 128.0
+margin/top = 200.0
+margin/right = 189.0
+margin/bottom = 222.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -225,14 +334,18 @@ align = 0
 [node name="Version Label" type="Label" parent="Menu"]
 
 visibility/opacity = 0.15
+anchor/left = 1
+anchor/top = 1
+anchor/right = 1
+anchor/bottom = 1
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 137.0
-margin/top = 126.0
-margin/right = 195.0
-margin/bottom = 140.0
+margin/left = 64.0
+margin/top = 18.0
+margin/right = 6.0
+margin/bottom = 4.0
 text = "1.0.0"
 align = 2
 percent_visible = 1.0
@@ -255,13 +368,23 @@ window/title = "Please Confirm..."
 dialog/text = "Are you sure you want to reset the timer to zero\?"
 dialog/hide_on_ok = true
 
-[connection signal="pressed" from="Menu/GridBox/Pause-Resume Button" to="." method="PauseResume_Button_pressed"]
+[connection signal="mouse_enter" from="." to="." method="mouse_enter"]
 
-[connection signal="pressed" from="Menu/GridBox/Switch-Pause Toggle" to="." method="SwitchPause_Toggle_pressed"]
+[connection signal="mouse_exit" from="." to="." method="mouse_exit"]
+
+[connection signal="pressed" from="Menu/GridBox/Pause-Resume Button" to="." method="PauseResume_Button_pressed"]
 
 [connection signal="pressed" from="Menu/GridBox/Add Time Button" to="." method="Add_Time_Button_pressed"]
 
 [connection signal="pressed" from="Menu/GridBox/Reset Button" to="." method="Reset_Button_pressed"]
+
+[connection signal="pressed" from="Menu/GridBox/Switch-Pause Toggle" to="." method="SwitchPause_Toggle_pressed"]
+
+[connection signal="pressed" from="Menu/GridBox/Use-Anim Toggle" to="." method="UseAnim_Toggle_pressed"]
+
+[connection signal="pressed" from="Menu/GridBox/Show Seconds Toggle" to="." method="Show_Seconds_Toggle_pressed"]
+
+[connection signal="pressed" from="Menu/GridBox/Only-Mouseover Toggle" to="." method="OnlyMouseover_Toggle_pressed"]
 
 [connection signal="pressed" from="Menu/GridBox/Close Button" to="." method="Close_Button_pressed"]
 
