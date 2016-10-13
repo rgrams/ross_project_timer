@@ -146,7 +146,7 @@ func pause():
 	else:
 		get_node("Label").set_opacity(0.4)
 		get_node("AnimationPlayer").stop_all() # since changing use_anim depends on this to update things
-	get_node("Timer Icon").set_opacity(0.4)
+		get_node("Timer Icon").set_opacity(0.4)
 
 func resume():
 	if not get_node("Timer").is_processing():

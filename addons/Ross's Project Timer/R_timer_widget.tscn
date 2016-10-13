@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://addons/Ross's Project Timer/R_timer_widget.gd" type="Script" id=1]
-[ext_resource path="res://addons/Ross's Project Timer/Timer Icon_16.png" type="Texture" id=2]
+[ext_resource path="res://addons/Ross's Project Timer/Timer Icon_44.png" type="Texture" id=2]
 
 [sub_resource type="Animation" id=1]
 
@@ -14,6 +14,11 @@ tracks/0/path = NodePath("Label:visibility/opacity")
 tracks/0/interp = 2
 tracks/0/imported = false
 tracks/0/keys = { "times":FloatArray( 0, 1.8, 2.3 ), "transitions":FloatArray( 1, 1, 1 ), "update":0, "values":[ 0.5, 0.1, 0.1 ] }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Timer Icon:visibility/opacity")
+tracks/1/interp = 2
+tracks/1/imported = false
+tracks/1/keys = { "times":FloatArray( 0, 1.8, 2.3 ), "transitions":FloatArray( 1, 1, 1 ), "update":0, "values":[ 0.5, 0.1, 0.1 ] }
 
 [node name="Control" type="Button"]
 
@@ -69,23 +74,38 @@ texture/rotation = 0.0
 invert/enable = false
 invert/border = 100.0
 
-[node name="Timer Icon" type="Sprite" parent="."]
+[node name="Timer Icon" type="TextureFrame" parent="."]
 
 visibility/visible = false
-transform/pos = Vector2( 46.7787, 13.9193 )
+anchor/left = 3
+anchor/top = 3
+anchor/right = 3
+anchor/bottom = 3
+rect/scale = Vector2( 0.45, 0.45 )
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 10.0
+margin/top = 10.0
+margin/right = -32.0
+margin/bottom = -32.0
 texture = ExtResource( 2 )
+stretch_mode = 4
 
 [node name="Label" type="Label" parent="."]
 
+anchor/left = 3
 anchor/top = 3
+anchor/right = 3
 anchor/bottom = 3
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 7.0
+margin/left = 40.0
 margin/top = 5.0
-margin/right = 87.0
+margin/right = -40.0
 margin/bottom = -9.0
 text = "0:09:59"
 align = 1
@@ -114,6 +134,7 @@ autoplay = ""
 
 [node name="Menu" type="PopupMenu" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
 anchor/top = 1
 anchor/bottom = 1
