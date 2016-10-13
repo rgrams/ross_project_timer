@@ -1,7 +1,17 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://addons/Ross's Project Timer/R_timer_widget.gd" type="Script" id=1]
 [ext_resource path="res://addons/Ross's Project Timer/Timer Icon_44.png" type="Texture" id=2]
+
+[sub_resource type="CanvasItemShader" id=3]
+
+_code = { "fragment":"uniform float opacity = 1.0;\nCOLOR.a *= opacity;", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=4]
+
+shader/shader = SubResource( 3 )
+shader/shading_mode = 0
+shader_param/opacity = 1.0
 
 [sub_resource type="Animation" id=1]
 
@@ -20,6 +30,28 @@ tracks/1/interp = 2
 tracks/1/imported = false
 tracks/1/keys = { "times":FloatArray( 0, 1.8, 2.3 ), "transitions":FloatArray( 1, 1, 1 ), "update":0, "values":[ 0.5, 0.1, 0.1 ] }
 
+[sub_resource type="Animation" id=2]
+
+resource/name = "collapse"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect/min_size")
+tracks/0/interp = 2
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 1 ), "transitions":FloatArray( -2.54912, 1 ), "update":0, "values":[ Vector2( 94, 28 ), Vector2( 28, 28 ) ] }
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect/size")
+tracks/1/interp = 2
+tracks/1/imported = false
+tracks/1/keys = { "times":FloatArray( 0, 1 ), "transitions":FloatArray( -2.54912, 1 ), "update":0, "values":[ Vector2( 94, 28 ), Vector2( 28, 28 ) ] }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Pause Icon:material/material:shader_param/opacity")
+tracks/2/interp = 2
+tracks/2/imported = false
+tracks/2/keys = { "times":FloatArray( 0, 1 ), "transitions":FloatArray( -2.54912, 1 ), "update":0, "values":[ 1.0, 0.0 ] }
+
 [node name="Control" type="Button"]
 
 rect/min_size = Vector2( 94, 28 )
@@ -36,16 +68,27 @@ enabled_focus_mode = 2
 shortcut = null
 flat = false
 script/script = ExtResource( 1 )
+collapsed = false
 
-[node name="Pause Icon" type="Node2D" parent="."]
+[node name="Pause Icon" type="Control" parent="."]
 
 visibility/visible = false
-transform/pos = Vector2( 85.9992, 7.93475 )
-transform/scale = Vector2( 0.519362, 0.519362 )
+material/material = SubResource( 4 )
+anchor/left = 1
+anchor/right = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 6.0
+margin/top = 7.0
+margin/right = 6.0
+margin/bottom = 7.0
 
 [node name="Polygon2D" type="Polygon2D" parent="Pause Icon"]
 
 material/use_parent = true
+transform/scale = Vector2( 0.52, 0.52 )
 polygon = Vector2Array( -6.85583, -7.56596, -6.51194, -7.9797, -2.5173, -7.97307, -2.15884, -7.57486, -2.1521, 7.58931, -2.54666, 7.98387, -6.44676, 7.98387, -6.8565, 7.52861 )
 uv = Vector2Array(  )
 color = Color( 1, 1, 1, 0.282353 )
@@ -61,7 +104,7 @@ invert/border = 100.0
 [node name="Polygon2D1" type="Polygon2D" parent="Pause Icon"]
 
 material/use_parent = true
-transform/pos = Vector2( 8.97441, 0 )
+transform/scale = Vector2( -0.52, 0.52 )
 polygon = Vector2Array( -6.85583, -7.56596, -6.51194, -7.9797, -2.5173, -7.97307, -2.15884, -7.57486, -2.1521, 7.58931, -2.54666, 7.98387, -6.44676, 7.98387, -6.8565, 7.52861 )
 uv = Vector2Array(  )
 color = Color( 1, 1, 1, 0.282353 )
@@ -132,9 +175,19 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 
+[node name="Collapse Anim" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/collapse = SubResource( 2 )
+playback/active = true
+playback/speed = 2.0
+blend_times = [  ]
+autoplay = ""
+
 [node name="Menu" type="PopupMenu" parent="."]
 
-editor/display_folded = true
 visibility/visible = false
 anchor/top = 1
 anchor/bottom = 1
@@ -144,8 +197,8 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 1.0
 margin/top = -4.0
-margin/right = 202.0
-margin/bottom = -242.0
+margin/right = 225.0
+margin/bottom = -267.0
 popup/exclusive = false
 items = [  ]
 
@@ -172,7 +225,7 @@ size_flags/horizontal = 3
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 189.0
+margin/right = 208.0
 margin/bottom = 22.0
 toggle_mode = false
 enabled_focus_mode = 2
@@ -190,7 +243,7 @@ size_flags/horizontal = 3
 size_flags/vertical = 3
 margin/left = 0.0
 margin/top = 22.0
-margin/right = 189.0
+margin/right = 208.0
 margin/bottom = 56.0
 toggle_mode = false
 enabled_focus_mode = 2
@@ -232,7 +285,7 @@ size_flags/horizontal = 3
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 56.0
-margin/right = 189.0
+margin/right = 208.0
 margin/bottom = 78.0
 toggle_mode = false
 enabled_focus_mode = 2
@@ -249,7 +302,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 3
 margin/left = 0.0
 margin/top = 78.0
-margin/right = 189.0
+margin/right = 208.0
 margin/bottom = 93.0
 
 [node name="Switch-Pause Toggle" type="CheckBox" parent="Menu/GridBox"]
@@ -260,7 +313,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 93.0
-margin/right = 189.0
+margin/right = 208.0
 margin/bottom = 116.0
 toggle_mode = true
 is_pressed = true
@@ -279,7 +332,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 116.0
-margin/right = 189.0
+margin/right = 208.0
 margin/bottom = 139.0
 toggle_mode = true
 is_pressed = true
@@ -297,7 +350,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 139.0
-margin/right = 189.0
+margin/right = 208.0
 margin/bottom = 162.0
 toggle_mode = true
 is_pressed = true
@@ -315,12 +368,53 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 162.0
-margin/right = 189.0
+margin/right = 208.0
 margin/bottom = 185.0
 toggle_mode = true
 enabled_focus_mode = 2
 shortcut = null
 text = "Only show on mouseover"
+flat = false
+align = 0
+
+[node name="GridContainer" type="GridContainer" parent="Menu/GridBox"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 185.0
+margin/right = 208.0
+margin/bottom = 208.0
+columns = 2
+
+[node name="Indent" type="Control" parent="Menu/GridBox/GridContainer"]
+
+rect/min_size = Vector2( 24, 0 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 24.0
+margin/bottom = 23.0
+
+[node name="Collapsible Toggle" type="CheckBox" parent="Menu/GridBox/GridContainer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 28.0
+margin/top = 0.0
+margin/right = 204.0
+margin/bottom = 23.0
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+text = "Collapse on mouse exit"
 flat = false
 align = 0
 
@@ -331,9 +425,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 3
 margin/left = 0.0
-margin/top = 185.0
-margin/right = 189.0
-margin/bottom = 200.0
+margin/top = 208.0
+margin/right = 208.0
+margin/bottom = 223.0
 
 [node name="Close Button" type="ToolButton" parent="Menu/GridBox"]
 
@@ -342,9 +436,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 200.0
-margin/right = 189.0
-margin/bottom = 222.0
+margin/top = 223.0
+margin/right = 208.0
+margin/bottom = 245.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -406,6 +500,8 @@ dialog/hide_on_ok = true
 [connection signal="pressed" from="Menu/GridBox/Show Seconds Toggle" to="." method="Show_Seconds_Toggle_pressed"]
 
 [connection signal="pressed" from="Menu/GridBox/Only-Mouseover Toggle" to="." method="OnlyMouseover_Toggle_pressed"]
+
+[connection signal="pressed" from="Menu/GridBox/GridContainer/Collapsible Toggle" to="." method="Collapsible_Toggle_pressed"]
 
 [connection signal="pressed" from="Menu/GridBox/Close Button" to="." method="Close_Button_pressed"]
 

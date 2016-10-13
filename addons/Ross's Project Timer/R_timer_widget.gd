@@ -7,13 +7,12 @@ var options_filepath = "res://addons/Ross's Project Timer/options.sav"
 var t = 0
 var manually_paused = false
 
-# Options vars
+# Options vars - names need to match up with keys names in save_options()
 var pause_on_switch = true
 var use_pause_anim = true
 var show_seconds = true
 var only_show_mouseover = false
-
-var options = ["pause on switch", "use pause anim", "show seconds", "only show on mouseover"]
+var collapsible = false
 
 func initialize():
 	get_node("Label").set_text("Initializing...")
@@ -90,6 +89,9 @@ func load_options():
 	get_node("Menu/GridBox/Only-Mouseover Toggle").set_pressed(only_show_mouseover)
 	get_node("Label").set_hidden(only_show_mouseover)
 	get_node("Timer Icon").set_hidden(not only_show_mouseover)
+	get_node("Menu/GridBox/GridContainer/Collapsible Toggle").set_pressed(collapsible)
+	if only_show_mouseover and collapsible:
+		collapse(true)
 	
 	save.close()
 
@@ -99,7 +101,8 @@ func save_options():
 	var data = {"pause_on_switch"	 : pause_on_switch, 
 				"use_pause_anim"	 : use_pause_anim,
 				"show_seconds"		 : show_seconds,
-				"only_show_mouseover": only_show_mouseover}
+				"only_show_mouseover": only_show_mouseover,
+				"collapsible"		 : collapsible}
 	save.store_line(data.to_json())
 	save.close()
 
@@ -173,13 +176,30 @@ func OnlyMouseover_Toggle_pressed():
 	only_show_mouseover = get_node("Menu/GridBox/Only-Mouseover Toggle").is_pressed()
 	get_node("Label").set_hidden(only_show_mouseover)
 	get_node("Timer Icon").set_hidden(not only_show_mouseover)
+	if collapsible:
+		if not only_show_mouseover: collapse(false)
+		elif not has_focus(): collapse(true)
+
+func Collapsible_Toggle_pressed():
+	collapsible = get_node("Menu/GridBox/GridContainer/Collapsible Toggle").is_pressed()
+	if not collapsible: collapse(false)
+	elif only_show_mouseover and not has_focus(): collapse(true)
+
+func collapse(yes):
+	if yes and not get_node("Collapse Anim").is_playing():
+		get_node("Collapse Anim").play("collapse")
+	else:
+		get_node("Collapse Anim").stop()
+		get_node("Collapse Anim").seek(0.0, true)
 
 func mouse_enter():
 	if only_show_mouseover:
 		get_node("Label").show()
 		get_node("Timer Icon").hide()
+		if collapsible: collapse(false)
 
 func mouse_exit():
 	if only_show_mouseover:
 		get_node("Label").hide()
 		get_node("Timer Icon").show()
+		if collapsible: collapse(true)
