@@ -42,35 +42,28 @@ func timer_tick():
 
 func update_text():
 	if t < 0: t = 0
-	get_node("Label").set_text(get_time_string())
-
-func get_time_string():
-	var s1 = t % 10
-	var s10 = ((t - s1) % 60)/10
-	var m1 = int(t/60) % 10
-	var m10 = (int((t - m1)/60) % 60 )/10
+	var s = t % 60
+	var m = int(t/60) % 60
 	var h = int(t/3600)
-	
-	var string = str(h) + ":" + str(m10) + str(m1)
-	if show_seconds: string += ":" + str(s10) + str(s1)
-	return string
+	var string = str(h) + ":" + str(m).pad_zeros(2)
+	if show_seconds: string += ":" + str(s).pad_zeros(2)
+	get_node("Label").set_text(string)
 
 func load_time():
 	var save = File.new()
 	if not save.file_exists(save_filepath):
-		print("(Ross's Project Timer) No save file, creating a new one . . . ")
 		save_time()
 	save.open(save_filepath, File.READ)
 	t = save.get_64()
 	save.close()
-	print("(Ross's Project Timer) Loading . . . Time: ", t)
+	print("[Ross's Project Timer] Loading . . . Time: ", t)
 
 func save_time():
 	var save = File.new()
 	save.open(save_filepath, File.WRITE)
 	save.store_64(t)
 	save.close()
-	print("(Ross's Project Timer) Saving . . . Time: ", t)
+	print("[Ross's Project Timer] Saving . . . Time: ", t)
 
 func load_options():
 	var save = File.new()
