@@ -1,9 +1,9 @@
 # Ross's Project Timer
 _A simple, unobtrusive, Godot engine editor plugin for tracking the time spent on a project._
 
-_v 1.0.0 Readme_
+_v 1.1.0 Readme_
 
-![Screenshot](http://i.imgur.com/GjTEQ0T.png)
+![Screenshot](http://i.imgur.com/14cu5Cd.png)
 
 _Screenshot of plugin widget with dropdown menu open_
 
@@ -28,14 +28,22 @@ You can click on the plugin button and it will open a menu with a few different 
 
 - Pause (& Resume when paused): Pauses and resumes the timer. 
 
-- Pause on window switch: Toggle off to make the timer keep counting up when the editor window is not in focus. 
+- Adjust Time - Use the buttons to add and subtract the amount of time selected in the input box from the elapsed time. 
 
 - Reset Time: Resets the elapsed time to zero. Pops up a confirm dialog so you don't do it by mistake. 
 
-- Add Time: Adds the amount of time selected in the input box to the elapsed time. 
-            (Select a negative value to subtract time.)
+- Pause on window switch: Toggle off to make the timer keep counting up when the editor window is not in focus. 
+
+- Use pause animation: Toggle the fading animation for the timer text/icon. Turning this off can save a tiny bit of CPU time. 
+
+- Show seconds: Toggle the display of seconds. 
+
+- Only show on mouseover: If on, the widget will only display the time when your mouse is hovering on it. The rest of the time it will be replaced by a static icon. 
+
+  - Collapse on mouse exit: Only applicable when the above option is checked. Collapses the widget to a small square button when your mouse is not on it. It expands to show the time when you mouse over it again. 
 
 - Close Menu: closes the menu. (Or you can press escape or click on something else.)
+
 
 ##Other Features
 
@@ -51,4 +59,4 @@ Currently there is one error that I know about. If you deactivate the plugin it 
 
 However, every plugin I've tried, even the official ones, give this error message. It doesn't actually seem to cause any problems. If you know anything about this error, let me know. 
 
-If you find any other bugs or have some feedback about things you would like to see changed or added, make an issue here on github, or you can contact me directly through my website: http://rossgrams.com/
+If you find any other bugs or have some feedback about things you would like to see changed or added, make an issue here on github, or you can contact me directly through my website: http://rossgrams.com/ Feature requests are welcome! (though I'm not going to do anything huge and crazy with this.)
