@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://addons/Ross's Project Timer/R_timer_widget.gd" type="Script" id=1]
 [ext_resource path="res://addons/Ross's Project Timer/Timer Icon_44.png" type="Texture" id=2]
+[ext_resource path="res://addons/Ross's Project Timer/Adjust Time Lines.png" type="Texture" id=3]
 
 [sub_resource type="CanvasItemShader" id=1]
 
@@ -234,21 +235,40 @@ align = 0
 
 [node name="Add Time Button" type="ToolButton" parent="Menu/GridBox"]
 
+rect/min_size = Vector2( 0, 50 )
 hint/tooltip = "Set to negative value to subtract time. "
-focus/ignore_mouse = false
+focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
 margin/left = 0.0
 margin/top = 22.0
 margin/right = 208.0
-margin/bottom = 56.0
+margin/bottom = 75.0
 toggle_mode = false
-enabled_focus_mode = 2
+enabled_focus_mode = 0
 shortcut = null
-text = "Add Time"
+text = "Adjust Time"
 flat = true
 align = 0
+
+[node name="Connection Lines" type="TextureFrame" parent="Menu/GridBox/Add Time Button"]
+
+anchor/left = 3
+anchor/top = 3
+anchor/right = 3
+anchor/bottom = 3
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -7.0
+margin/top = 15.5
+margin/right = -47.0
+margin/bottom = -24.5
+texture = ExtResource( 3 )
+modulate = Color( 1, 1, 1, 0.12549 )
+stretch_mode = 0
 
 [node name="Time SpinBox" type="SpinBox" parent="Menu/GridBox/Add Time Button"]
 
@@ -260,11 +280,11 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 2
-margin/left = 94.0
-margin/top = 12.0
-margin/right = 4.0
-margin/bottom = -12.0
-range/min = -999999.0
+margin/left = 77.0
+margin/top = 12.5
+margin/right = 1.0
+margin/bottom = -11.5
+range/min = 1.0
 range/max = 999999.0
 range/step = 1.0
 range/page = 0.0
@@ -273,7 +293,47 @@ range/exp_edit = true
 range/rounded = false
 editable = true
 prefix = ""
-suffix = "min."
+suffix = "min"
+
+[node name="Add Button" type="Button" parent="Menu/GridBox/Add Time Button"]
+
+anchor/left = 3
+anchor/top = 3
+anchor/right = 3
+anchor/bottom = 3
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 22.0
+margin/top = 20.5
+margin/right = -15.0
+margin/bottom = 0.5
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Add"
+flat = false
+
+[node name="Subtract Button" type="Button" parent="Menu/GridBox/Add Time Button"]
+
+anchor/left = 3
+anchor/top = 3
+anchor/right = 3
+anchor/bottom = 3
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 22.0
+margin/top = -1.5
+margin/right = -15.0
+margin/bottom = -21.5
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Sub"
+flat = false
 
 [node name="Reset Button" type="ToolButton" parent="Menu/GridBox"]
 
@@ -282,9 +342,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 56.0
+margin/top = 75.0
 margin/right = 208.0
-margin/bottom = 78.0
+margin/bottom = 97.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -299,9 +359,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 3
 margin/left = 0.0
-margin/top = 78.0
+margin/top = 97.0
 margin/right = 208.0
-margin/bottom = 93.0
+margin/bottom = 103.0
 
 [node name="Switch-Pause Toggle" type="CheckBox" parent="Menu/GridBox"]
 
@@ -310,9 +370,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 93.0
+margin/top = 103.0
 margin/right = 208.0
-margin/bottom = 116.0
+margin/bottom = 126.0
 toggle_mode = true
 is_pressed = true
 enabled_focus_mode = 2
@@ -329,9 +389,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 116.0
+margin/top = 126.0
 margin/right = 208.0
-margin/bottom = 139.0
+margin/bottom = 149.0
 toggle_mode = true
 is_pressed = true
 enabled_focus_mode = 2
@@ -347,9 +407,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 139.0
+margin/top = 149.0
 margin/right = 208.0
-margin/bottom = 162.0
+margin/bottom = 172.0
 toggle_mode = true
 is_pressed = true
 enabled_focus_mode = 2
@@ -365,9 +425,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 162.0
+margin/top = 172.0
 margin/right = 208.0
-margin/bottom = 185.0
+margin/bottom = 195.0
 toggle_mode = true
 enabled_focus_mode = 2
 shortcut = null
@@ -377,14 +437,15 @@ align = 0
 
 [node name="GridContainer" type="GridContainer" parent="Menu/GridBox"]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 185.0
+margin/top = 195.0
 margin/right = 208.0
-margin/bottom = 208.0
+margin/bottom = 218.0
 columns = 2
 
 [node name="Indent" type="Control" parent="Menu/GridBox/GridContainer"]
@@ -423,9 +484,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 3
 margin/left = 0.0
-margin/top = 208.0
+margin/top = 218.0
 margin/right = 208.0
-margin/bottom = 223.0
+margin/bottom = 224.0
 
 [node name="Close Button" type="ToolButton" parent="Menu/GridBox"]
 
@@ -434,9 +495,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 223.0
+margin/top = 224.0
 margin/right = 208.0
-margin/bottom = 245.0
+margin/bottom = 246.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -487,7 +548,9 @@ dialog/hide_on_ok = true
 
 [connection signal="pressed" from="Menu/GridBox/Pause-Resume Button" to="." method="PauseResume_Button_pressed"]
 
-[connection signal="pressed" from="Menu/GridBox/Add Time Button" to="." method="Add_Time_Button_pressed"]
+[connection signal="pressed" from="Menu/GridBox/Add Time Button/Add Button" to="." method="Add_Button_pressed"]
+
+[connection signal="pressed" from="Menu/GridBox/Add Time Button/Subtract Button" to="." method="Subtract_Button_pressed"]
 
 [connection signal="pressed" from="Menu/GridBox/Reset Button" to="." method="Reset_Button_pressed"]
 
