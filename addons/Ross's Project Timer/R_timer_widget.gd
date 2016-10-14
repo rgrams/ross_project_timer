@@ -118,10 +118,14 @@ func ResetConfirm_confirmed():
 func Close_Button_pressed():
 	get_node("Menu").hide()
 
-func Add_Time_Button_pressed():
+func Add_Button_pressed():
 	var time = get_node("Menu/GridBox/Add Time Button/Time SpinBox").get_value()
-	time = int(time) * 60
-	t += time
+	t += int(time) * 60
+	update_text()
+
+func Subtract_Button_pressed():
+	var time = get_node("Menu/GridBox/Add Time Button/Time SpinBox").get_value()
+	t -= int(time) * 60
 	update_text()
 
 func PauseResume_Button_pressed():
