@@ -9,7 +9,7 @@ _Screenshot of plugin widget with dropdown menu open_
 
 [Click here for a full screen screenshot.](http://i.imgur.com/kwhBoeh.png) 
 
-##How to use this plugin
+### How to use this plugin
 
 1. Place the 'addons' folder in your project's root folder. 
 (If you've downloaded this from the Asset Library it should happen automatically)
@@ -22,7 +22,7 @@ immediately start counting up time every second.
 By default the timer will automatically pause if you switch to a different window, and automatically resume when you switch back. You can toggle this on and off in the menu (see below). Your elapsed time is saved when you close the editor or disable the plugin, and loaded when you open the project again or re-enable the plugin.
 
 
-##Menu
+### Menu
 
 You can click on the plugin button and it will open a menu with a few different options:
 
@@ -45,12 +45,12 @@ You can click on the plugin button and it will open a menu with a few different 
 - Close Menu: closes the menu. (Or you can press escape or click on something else.)
 
 
-##Other Features
+### Other Features
 
 You can right-click on the plugin button to quickly pause and resume. 
 
 
-##Bugs / Feedback
+### Bugs / Feedback
 
 Currently there is one error that I know about. If you deactivate the plugin it gives this error message:
 
@@ -59,4 +59,4 @@ Currently there is one error that I know about. If you deactivate the plugin it 
 
 However, every plugin I've tried, even the official ones, give this error message. It doesn't actually seem to cause any problems. If you know anything about this error, let me know. 
 
-If you find any other bugs or have some feedback about things you would like to see changed or added, make an issue here on github, or you can contact me directly through my website: http://rossgrams.com/ Feature requests are welcome! (though I'm not going to do anything huge and crazy with this.)
+As of 2017 I'm no longer using Godot, so if this plugin gets out of date or something like that, I most likely won't get around to fixing it. Of course, feel free to fork it and make any changes you like. 
